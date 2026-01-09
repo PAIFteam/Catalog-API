@@ -19,5 +19,4 @@ public class GetProductByIdEndpoint : ICarterModule
         .WithSummary("Get Product By Id")
         .WithDescription("Get Product By Id");
     }
-{
 }
