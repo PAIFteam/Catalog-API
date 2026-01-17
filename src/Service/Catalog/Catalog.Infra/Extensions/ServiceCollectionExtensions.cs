@@ -7,6 +7,7 @@ using System.Reflection;
 using Catalog.Core.Domain.Interfaces;
 using Catalog.Infra.Data.Repositories.Catalog;
 using Catalog.Core.Application.UseCases.GameUser.PutGameUser;
+using Catalog.Core.Application.UseCases.GameUser.AddGameUser;
 
 namespace Catalog.Infra.Extensions
 {
@@ -21,6 +22,10 @@ namespace Catalog.Infra.Extensions
                     Assembly.GetExecutingAssembly(),
                     Assembly.GetAssembly(typeof(PutGameUserUseCase))!
                     );
+                cfg.RegisterServicesFromAssemblies(
+                   Assembly.GetExecutingAssembly(),
+                   Assembly.GetAssembly(typeof(AddGameUserUseCase))!
+                   );
             });
 
             //Registro dos Repositorios
@@ -28,6 +33,7 @@ namespace Catalog.Infra.Extensions
 
             //Registro dos UseCases
             services.AddScoped<PutGameUserUseCase>();
+            services.AddScoped<AddGameUserUseCase>();
 
             return services;
         }

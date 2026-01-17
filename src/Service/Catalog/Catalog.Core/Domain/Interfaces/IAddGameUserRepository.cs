@@ -5,7 +5,7 @@ namespace Catalog.Core.Domain.Interfaces
 {
     public interface IAddGameUserRepository
     {
-        Task<OutPutBase> AddGameUserAsync(GameUser gameUser);
+        Task<bool> AddGameUserAsync(GameUser gameUser);
         
     }
 }

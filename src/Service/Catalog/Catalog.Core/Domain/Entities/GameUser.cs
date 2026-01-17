@@ -1,6 +1,4 @@
-﻿using Catalog.Core.Domain;
-using Catalog.Core.Domain.Entities;
-
+﻿
 namespace Catalog.Core.Domain.Entities
 { 
     public class GameUser

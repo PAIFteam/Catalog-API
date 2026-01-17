@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Domain\Interfaces\IAddGameUserUseCase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Application\Commons\Enums\" />
     <Folder Include="Application\Configurations\" />
     <Folder Include="Application\Mappings\" />

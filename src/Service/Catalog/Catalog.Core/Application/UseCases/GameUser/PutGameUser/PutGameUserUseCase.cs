@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using System.Text.RegularExpressions;
 using Catalog.Core.Domain.Entities.Base;
 using Catalog.Core.Domain.Entities.RabbitMQ;
 using Catalog.Core.Domain.Interfaces;
