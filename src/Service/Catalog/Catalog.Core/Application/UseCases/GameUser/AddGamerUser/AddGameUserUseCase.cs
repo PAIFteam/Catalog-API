@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Text.RegularExpressions;
 using Catalog.Core.Domain.Entities.Base;
+using Catalog.Core.Domain.Entities;
 using Catalog.Core.Domain.Entities.RabbitMQ;
 using Catalog.Core.Domain.Interfaces;
+
 
 namespace Catalog.Core.Application.UseCases.GameUser.AddGameUser
 {
@@ -13,11 +15,13 @@ namespace Catalog.Core.Application.UseCases.GameUser.AddGameUser
         private readonly IPublisher _publisher;
         private readonly RabbitMqConfigurationSettings _rabbitMqConfigurationSettings;
         public AddGameUserUseCase(
-            IAddGameUserRepository addUserRepository,
-            ILogger<AddGameUserUseCase> logger
-        )
+                                    IAddGameUserRepository addUserRepository,
+                                    IPublisher publisher,
+                                    ILogger<AddGameUserUseCase> logger
+                                    )
         {
             _addGameUserRepository = addUserRepository;
+            _publisher = publisher;
             _logger = logger;
         }
 
@@ -41,12 +45,7 @@ namespace Catalog.Core.Application.UseCases.GameUser.AddGameUser
                     };
                 }
 
-                //Envia mensagem para fila RabbitMQ no Evento OrderPlacedEvent
-                var message = new OrderPlacedMessage(input.IdUser, input.IdGame, input.Price);
-
-                await _publisher.Publish(message, _rabbitMqConfigurationSettings.GetQueueAdress());
-
-                //int idUser = await _AddGameUserRepository.AddGameUserAsync(input.MapToUser());
+                await _addGameUserRepository.AddGameUserAsync(new Domain.Entities.GameUser(input.IdUser, input.IdGame, input.Price));
 
                 AddGameUserOutput outPut = new AddGameUserOutput
                 {

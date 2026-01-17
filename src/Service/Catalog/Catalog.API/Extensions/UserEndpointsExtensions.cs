@@ -45,7 +45,7 @@ namespace Catalog.API.Extensions
             })
                .WithName("GetGameUser")
                .WithDescription("Recebe uma requisição para adicionar um jogo à \r\nbiblioteca de um usuário ")
-               .Produces<IEnumerable<User>>(StatusCodes.Status200OK)
+               .Produces<IEnumerable<GameUser>>(StatusCodes.Status200OK)
                .Produces(StatusCodes.Status404NotFound)
                .Produces(StatusCodes.Status400BadRequest);
             //.Produces(StatusCodes.Status401Unauthorized)

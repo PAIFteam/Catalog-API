@@ -25,7 +25,7 @@ namespace Catalog.Infra.Data.Repositories.Catalog
 
         private IDbConnection CreateConnection()=> new SqlConnection(_connectionString);
 
-        public async Task<OutPutBase> AddGameUserAsync(GameUser gameuser)
+        public async Task<bool> AddGameUserAsync(GameUser gameuser)
         {
             try
             {
@@ -49,15 +49,17 @@ namespace Catalog.Infra.Data.Repositories.Catalog
 	
 	                                INSERT INTO dbo.sale_item (id_sale_item, id_sale, id_game, id_promotion, price) 
                                                         VALUES (@new_id_sale_item, @new_id_sale, @IdGame, @id_promotion, @Price) 
-
+                                    
+                                    SELECT @new_id_sale as NewIdSale
                                 end
+                                
                               ";
 
                 var result = await connection.ExecuteScalarAsync(sql, gameuser);
                 if (result == null || result == DBNull.Value)
                     throw new InvalidOperationException("Falha ao inserir Game User");
 
-                return new OutPutBase();
+                return true;
             }
             catch (Exception ex)
             {

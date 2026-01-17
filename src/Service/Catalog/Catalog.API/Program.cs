@@ -26,11 +26,11 @@ var key = Encoding.ASCII.GetBytes("abc123");
 //    };
 //});
 
-builder.Services.AddAuthorization();
+builder.Services.AddRabbitMq(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfraestructure();
-builder.Services.AddRabbitMq(builder.Configuration);
+
 
 var app = builder.Build();
 

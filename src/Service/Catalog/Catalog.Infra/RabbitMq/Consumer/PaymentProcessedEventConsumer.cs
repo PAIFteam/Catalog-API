@@ -9,11 +9,11 @@ namespace Payments.Core.Entities.RabbitMq
 {
     public class PaymentProcessedEventConsumer: IConsumer<PaymentProcessedMessage>
     {
-        private readonly IAddGameUserUseCase _addGameUserUseCase;
+        private readonly AddGameUserUseCase _addGameUserUseCase;
         private readonly ILogger<PaymentProcessedEventConsumer> _logger;
 
         public PaymentProcessedEventConsumer(
-            IAddGameUserUseCase  addGameUserUse,
+            AddGameUserUseCase addGameUserUse,
             ILogger<PaymentProcessedEventConsumer> logger
             )
         {
