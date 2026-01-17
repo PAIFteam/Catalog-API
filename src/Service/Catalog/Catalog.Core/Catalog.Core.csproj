@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Application\UseCases\GameUser\GetGameUser\**" />
+    <Compile Remove="Domain\Messages\**" />
+    <EmbeddedResource Remove="Application\UseCases\GameUser\GetGameUser\**" />
+    <EmbeddedResource Remove="Domain\Messages\**" />
+    <None Remove="Application\UseCases\GameUser\GetGameUser\**" />
+    <None Remove="Domain\Messages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\Commons\Enums\" />
+    <Folder Include="Application\Configurations\" />
+    <Folder Include="Application\Mappings\" />
+    <Folder Include="Application\UseCases\Games\" />
+    <Folder Include="Domain\Azure\" />
+    <Folder Include="Domain\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.9" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.9" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.0.7" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.0.7" />
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="7.0.7" />
+  </ItemGroup>
+</Project>
