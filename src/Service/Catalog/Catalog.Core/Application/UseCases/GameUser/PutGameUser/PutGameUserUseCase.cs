@@ -28,6 +28,7 @@ namespace Catalog.Core.Application.UseCases.GameUser.PutGameUser
         public async Task<PutGameUserOutput> ExecuteAsync(PutGameUserInput input)
         {
             _logger.LogInformation("Starting PutGamerUserCase.ExecuteAsync");
+            _logger.LogInformation($"Recebendo requisição para Efetiva compra de Jogo Usuario: {input.IdUser}");
 
             try
             {                
@@ -46,9 +47,10 @@ namespace Catalog.Core.Application.UseCases.GameUser.PutGameUser
                 //Envia mensagem para fila RabbitMQ no Evento OrderPlacedEvent
                 var message = new OrderPlacedMessage(input.IdUser, input.IdGame, input.Price);
 
+                _logger.LogInformation("Invoca o Publish para a fila OrderPlacedMessage");
                 await _publisher.Publish(message, _rabbitMqConfigurationSettings.GetQueueAdress());
 
-                //int idUser = await _PutGameUserRepository.PutGameUserAsync(input.MapToUser());
+                _logger.LogInformation($"Publish para a fila OrderPlacedMessage ENVIADA p Usuario: {input.IdUser}");
 
                 PutGameUserOutput outPut = new PutGameUserOutput
                 {

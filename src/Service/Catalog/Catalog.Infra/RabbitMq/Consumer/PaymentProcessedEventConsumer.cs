@@ -22,15 +22,17 @@ namespace Payments.Core.Entities.RabbitMq
         }
         public async Task Consume(ConsumeContext<PaymentProcessedMessage> context)
         {
-
-            // Lógica para efetivar o jogo ao usuário se o pagamento foi aprovado
-            Console.WriteLine($"Gravando dados para efetivar o jogo ao usuário se o pagamento foi aprovado,  {context.Message.IdUser} " +
+            _logger.LogInformation($"Consumer do PaymentProcessedMessage - Gravando dados para efetivar o jogo ao usuário se o pagamento foi aprovado,  {context.Message.IdUser} " +
                 $" IdGame ({context.Message.IdGame}) e Price {context.Message.Price.ToString()}");
+            // Lógica para efetivar o jogo ao usuário se o pagamento foi aprovado
+           
+            
+            await Task.CompletedTask;
 
             AddGameUserOutput addGameUserOutput = await _addGameUserUseCase.ExecuteAsync(
                 new AddGameUserInput(context.Message.IdUser,context.Message.IdGame,context.Message.Price));
             
-            await Task.CompletedTask;
+           
         }
     }
 }
