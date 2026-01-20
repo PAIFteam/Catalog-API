@@ -1,9 +1,6 @@
 using Catalog.API.Extensions;
 using Catalog.Infra.Extensions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Catalog.Infra.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +31,7 @@ builder.Services.AddInfraestructure();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();

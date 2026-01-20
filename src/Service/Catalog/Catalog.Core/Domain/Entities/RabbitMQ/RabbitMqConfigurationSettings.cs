@@ -19,7 +19,6 @@ namespace Catalog.Core.Domain.Entities.RabbitMQ
         public string QueueName { get; set; }
         public string QueueNameConsumer { get; set; }
         
-        public string ScheduleQueueName { get; set; }
         public bool StartConsumer { get; set; } = false;
 
         //rabbitmq://[usuário:senha@]host[:porta]/[vhost/][nome-da-fila-ou-exchange]
