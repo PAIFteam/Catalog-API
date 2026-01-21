@@ -1,4 +1,6 @@
 ﻿
+using MediatR;
+
 namespace Catalog.API.Products.GetProducts;
 
 //public record GetProductsRequest();

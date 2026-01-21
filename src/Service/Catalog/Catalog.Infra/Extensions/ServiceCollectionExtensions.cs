@@ -30,6 +30,8 @@ namespace Catalog.Infra.Extensions
 
             //Registro dos Repositorios
             services.AddScoped<IAddGameUserRepository, AddUserRepository>();
+            services.AddScoped<IGameLibraryQueryRepository, GameLibraryQueryRepository>();
+            services.AddScoped<IGameAdminRepository, GameAdminRepository>();
 
             //Registro dos UseCases
             services.AddScoped<PutGameUserUseCase>();

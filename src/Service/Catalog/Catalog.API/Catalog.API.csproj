@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="GlobalUsing.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Products\**" />
     <Content Remove="Products\**" />
     <EmbeddedResource Remove="Products\**" />
     <None Remove="Products\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="GlobalUsing.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,15 +31,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Carter" Version="8.2.1" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="MassTransit.AspNetCore" Version="7.0.7" />
     <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="7.0.7" />
     <PackageReference Include="MassTransit.Quartz" Version="7.0.7" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="7.0.7" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.22" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Catalog.Infra\Catalog.Infra.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>

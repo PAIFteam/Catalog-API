@@ -24,8 +24,6 @@ namespace Payments.Core.Entities.RabbitMq
         {
             _logger.LogInformation($"Consumer do PaymentProcessedMessage - Gravando dados para efetivar o jogo ao usuário se o pagamento foi aprovado,  {context.Message.IdUser} " +
                 $" IdGame ({context.Message.IdGame}) e Price {context.Message.Price.ToString()}");
-            // Lógica para efetivar o jogo ao usuário se o pagamento foi aprovado
-           
             
             await Task.CompletedTask;
 

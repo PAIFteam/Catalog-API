@@ -1,4 +1,6 @@
-﻿namespace Catalog.API.Products.GetProductById;
+﻿using MediatR;
+
+namespace Catalog.API.Products.GetProductById;
 
 //public record GetUserByIdRequest(Guid Id);
 public record GetProductByIdResponse(ProductModel Product);

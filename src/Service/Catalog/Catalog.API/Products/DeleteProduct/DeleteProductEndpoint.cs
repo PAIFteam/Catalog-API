@@ -1,4 +1,6 @@
-﻿namespace Catalog.API.Products.DeleteProduct;
+﻿using MediatR;
+
+namespace Catalog.API.Products.DeleteProduct;
 
 //public record DeleteProductRequest(Guid Id);
 public record DeleteProductResponse(bool IsSuccess);

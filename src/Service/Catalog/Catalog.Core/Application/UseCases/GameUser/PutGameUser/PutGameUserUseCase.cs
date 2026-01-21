@@ -55,7 +55,7 @@ namespace Catalog.Core.Application.UseCases.GameUser.PutGameUser
                 PutGameUserOutput outPut = new PutGameUserOutput
                 {
                     Result = false,
-                    Message = "Game to User event created successfully",
+                    Message = "Comando de compra executado, aguardando pagamento!",
                     Exception = null
 
                 };
