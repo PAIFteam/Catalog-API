@@ -135,6 +135,34 @@ namespace Catalog.API.Extensions
                 .Produces(StatusCodes.Status200OK)
                 .Produces(StatusCodes.Status404NotFound)
                 .RequireAuthorization(policy => policy.RequireRole("Admin"));
+
+            api.MapPost("/report/sales", async (
+                PostSalesReportUseCase postSalesReportUseCase,
+                ILogger<Program> logger) =>
+                    {
+                        try
+                        {
+                            var result = await postSalesReportUseCase.ExecuteAsync();
+
+                            if (result == null)
+                                return Results.NotFound("Nenhum processo executado com os critérios fornecidos.");
+
+                            return Results.Ok(result);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.LogError(ex, "Um erro ocorreu ao processar a o relatório de vendas.");
+                            return Results.BadRequest("Um erro ocorreu ao processar sua solicitação.");
+                        }
+
+                    })
+                .WithName("ReportSales")
+                .WithDescription("Gera relatório de Gestão de Vendas diário")
+                .Produces<PutGameUserOutput>(StatusCodes.Status200OK)
+                .Produces(StatusCodes.Status404NotFound)
+                .Produces(StatusCodes.Status400BadRequest)
+                .Produces(StatusCodes.Status401Unauthorized)
+                .RequireAuthorization(policy => policy.RequireRole("User", "Admin"));
         }  
     }
 }
