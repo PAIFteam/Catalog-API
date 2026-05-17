@@ -12,16 +12,12 @@ namespace Catalog.Core.Application.UseCases.GameUser.AddGameUser
     {
         private readonly IAddGameUserRepository _addGameUserRepository;
         private readonly ILogger<AddGameUserUseCase> _logger;
-        private readonly IPublisher _publisher;
-        private readonly RabbitMqConfigurationSettings _rabbitMqConfigurationSettings;
         public AddGameUserUseCase(
                                     IAddGameUserRepository addUserRepository,
-                                    IPublisher publisher,
                                     ILogger<AddGameUserUseCase> logger
                                     )
         {
             _addGameUserRepository = addUserRepository;
-            _publisher = publisher;
             _logger = logger;
         }
 
@@ -49,7 +45,7 @@ namespace Catalog.Core.Application.UseCases.GameUser.AddGameUser
 
                 AddGameUserOutput outPut = new AddGameUserOutput
                 {
-                    Result = false,
+                    Result = true,
                     Message = "Game to User event created successfully",
                     Exception = null
 
