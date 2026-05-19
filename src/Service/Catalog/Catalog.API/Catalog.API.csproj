@@ -9,6 +9,7 @@
     <DockerfileContext>..\..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
     <OutputType>Exe</OutputType>
+    <PackageProjectUrl>https://localhost:44310/swagger</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -83,7 +83,7 @@ if (!app.Environment.IsProduction())
     
             swagger.Servers = new List<Microsoft.OpenApi.Models.OpenApiServer>
             {
-                new() { Url = $"{scheme}://{host}/catalog" }
+                new() { Url = $"{scheme}://{host}" }
             };
         });
     });
